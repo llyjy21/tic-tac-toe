@@ -51,6 +51,10 @@ var Row = React.createClass({
             list: [1,2,3]
         };
     },
+    tick: function() {
+        var indexofRow;
+        this.setState({indexofRow: 1});
+    },
     /**
     * Render a HTML button
     * @return {ReactElement}
@@ -58,11 +62,12 @@ var Row = React.createClass({
     'render': function onRender () {
         var results = this.state.list;
         return (
-            <div>
+            <div onClick={this.tick}>
                 {results.map(function(result) {
                         return <Box key={result.id} initialValue='X'/>;
                 })}
             </div>
+            <p>This is Row:{this.state.indexofRow}</p>
         );
     }
 });
