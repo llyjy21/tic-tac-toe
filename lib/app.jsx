@@ -44,25 +44,27 @@ var Box = React.createClass({
         );
     }
 });
+
 var Row = React.createClass({
     getInitialState: function() {
-        return {value: this.props.initialValue};
-    },
-    tick: function() {
-        this.setState({value: this.state.value === 'X' ? 'O' : 'X'});
+        return {
+            list: [1,2,3]
+        };
     },
     /**
     * Render a HTML button
     * @return {ReactElement}
     */
     'render': function onRender () {
+        var results = this.state.list;
         return (
             <div>
-                <Box initialValue='X'/>
-                <Box initialValue='X'/>
-                <Box initialValue='X'/>
+                {results.map(function(result) {
+                        return <Box key={result.id} initialValue='X'/>;
+                })}
             </div>
         );
     }
 });
+
 React.render(<Row />, document.body);
