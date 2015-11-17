@@ -64,12 +64,34 @@ var Row = React.createClass({
         return (
             <div onClick={this.tick}>
                 {results.map(function(result) {
-                        return <Box key={result.id} initialValue='X'/>;
+                        return <Box key={result.id} initialValue='-'/>;
                 })}
             </div>
-            <p>This is Row:{this.state.indexofRow}</p>
         );
     }
 });
 
-React.render(<Row />, document.body);
+var Grid = React.createClass({
+    getInitialState: function() {
+        return {
+            list: [1,2,3]
+        };
+    },
+
+    /**
+    * Render a HTML button
+    * @return {ReactElement}
+    */
+    'render': function onRender () {
+        var results = this.state.list;
+        return (
+            <div onClick={this.tick}>
+                {results.map(function(result) {
+                    return <Row key={result.id}/>;
+                })}
+            </div>
+        );
+    }
+});
+
+React.render(<Grid />, document.body);
