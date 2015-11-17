@@ -20,15 +20,19 @@ var Box = React.createClass({
     },
     /*
     * Step 5 - Change state alternating between X and O
-    */
+
     tick: function() {
-        this.setState({value: this.state.value === 'X' ? 'O' :  'X'});
+        this.setState({value: this.state.value === 'X' ? 'O' : 'X'});
     },
     componentDidMount: function() {
-        this.interval = setInterval(this.tick, 1000);
+        this.interval = setInterval(this.tick, 300);
     },
     componentWillUnmount: function() {
-    clearInterval(this.interval);
+        clearInterval(this.interval);
+    },
+    */
+    tick: function() {
+        this.setState({value: this.state.value === 'X' ? 'O' : 'X'});
     },
     /**
     * Render a HTML button
@@ -36,7 +40,7 @@ var Box = React.createClass({
     */
     'render': function onRender () {
         return (
-            <button style={boxStyle}>{this.state.value}</button>
+            <button style={boxStyle} onClick={this.tick}>{this.state.value}</button>
         );
     }
 });
